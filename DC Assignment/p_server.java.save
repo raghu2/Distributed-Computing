@@ -1,0 +1,35 @@
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.StringTokenizer;
+
+public class p_server{
+
+	public static void main(String args[]) throws IOException{
+
+		if(args.length!=1){
+			System.out.println("Enter one argument: Port number");
+		}
+
+		else{
+			port_num=args[0];
+		//	number_of_clients=args[1];
+		}
+
+		//for(i=1;i<=number_of_clients;i++){
+
+			DatagramSocket sock=new DatagramSocket(port_num);
+
+			byte[] buf = null;
+
+			DatagramPacket rec = null;
+			DatagramPacket sen = null;
+
+			buf = new byte[100];
+
+			rec = new DatagramPacket(buf, buf.length);
+			sock.receive(rec);
+			String str = new String(buf, 0, buf.length);
+
+	//	}
